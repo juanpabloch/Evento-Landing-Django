@@ -19,7 +19,7 @@ ___
 
 - `/registro` : esta ruta es una especie de registro secreto para poder acceder a la lista de las personas registradas, para registrarse debemos hacerlo desde la url: `/registro?username=<nombre-de-usuario>&password=<contraseña>&key=<clave-secreta>`  
 
-Para este login se necesita una clave secreta que se puede establecer en las variables de entorno como REGISTRATION_KEY     
+Para este login se necesita una clave secreta que se puede establecer en las variables de entorno como REGISTRATION_KEY tambien podemos cambiar el email del cual se envian los emails con la variable EMAIL_PROVIDER  
 
 - `/login` : para loguernos y ver la lista de participantes inscriptos  
 

@@ -392,6 +392,23 @@ footer hr{
     color: #c53434;
 }
 
+/*--- messages ---*/
+.messages{
+    width: 100%;
+    font-family: ProximaNova-Regular;
+    font-size: 2rem;
+    text-align: center;
+}
+.messages li{
+    list-style: none;
+}
+.messages .error{
+    color: #c53434;
+}
+.messages .success{
+    color: #43af82;
+}
+
 @media screen and (max-width: 1050px){
     section .form{
         padding: 25px;
@@ -438,6 +455,10 @@ footer hr{
 @media screen and (max-width: 850px) {
     :root{
         font-size: 8.5px;
+    }
+    .login_form h3{
+        font-size: 5rem;
+        line-height: 5rem;
     }
 }
 

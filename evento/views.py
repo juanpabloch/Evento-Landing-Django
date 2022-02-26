@@ -14,8 +14,9 @@ env = environ.Env(DEBUG=(bool, False))
 
 PORT = 465
 CONTEXT = ssl.create_default_context()
-my_email = "webinarcxfinanciero@gmail.com"
+my_email = env("EMAIL_PROVIDER") or "webinarcxfinanciero@gmail.com"
 my_password = env("EMAIL_PASSWORD")
+
 
 def send_email(email, name):
     frase = """
@@ -102,4 +103,3 @@ def registro_acceso_lista(request):
 
     messages.success(request, 'Creado exitosamente')
     return redirect('login')
-
