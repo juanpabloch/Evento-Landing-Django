@@ -1,1 +1,0 @@
-# Evento-Landing-Django
