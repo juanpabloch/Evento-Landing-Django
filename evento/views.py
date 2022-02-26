@@ -55,7 +55,6 @@ def index(request):
 # @login_required(login_url='login')
 def lista_personas(request):
     lista = Registro.objects.all()
-
     context = {
         'lista': lista
     }

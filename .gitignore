@@ -2,3 +2,4 @@
 /include
 /Scripts
 pyvenv.cfg
+.env
