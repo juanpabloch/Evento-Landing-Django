@@ -5,14 +5,17 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.models import User
+import environ
 
 import smtplib, ssl
 # Create your views here.
 
+env = environ.Env(DEBUG=(bool, False))
+
 PORT = 465
 CONTEXT = ssl.create_default_context()
 my_email = "webinarcxfinanciero@gmail.com"
-my_password = 'asd567jkl123'
+my_password = env("EMAIL_PASSWORD")
 
 def send_email(email, name):
     frase = """
@@ -52,7 +55,7 @@ def index(request):
     return render(request, 'evento/index.html', context)
 
 
-# @login_required(login_url='login')
+@login_required(login_url='login')
 def lista_personas(request):
     lista = Registro.objects.all()
     context = {
@@ -78,7 +81,7 @@ def login_user(request):
     return render(request, 'evento/login.html', context)
 
 
-# @login_required
+@login_required
 def logout_user(request):
     logout(request)
     return redirect('login')
@@ -88,7 +91,7 @@ def registro_acceso_lista(request):
     username = request.GET.get('username')
     password = request.GET.get('password')
     key = request.GET.get('key')
-    if key != 'abc123':
+    if key != env("REGISTRATION_KEY"):
         messages.error(request, 'la clave es invalida')
         return redirect('login')
     try:
