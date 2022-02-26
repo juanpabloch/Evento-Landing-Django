@@ -50,3 +50,54 @@ def index(request):
         'active': ''
     }
     return render(request, 'evento/index.html', context)
+
+
+# @login_required(login_url='login')
+def lista_personas(request):
+    lista = Registro.objects.all()
+
+    context = {
+        'lista': lista
+    }
+    return render(request, 'evento/lista.html', context)
+
+
+def login_user(request):
+    form = UserRegistro()
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('listado')
+        else:
+            messages.error(request, 'usuario o password incorrectos')
+    context = {
+        'form': form
+    }
+    return render(request, 'evento/login.html', context)
+
+
+# @login_required
+def logout_user(request):
+    logout(request)
+    return redirect('login')
+
+
+def registro_acceso_lista(request):
+    username = request.GET.get('username')
+    password = request.GET.get('password')
+    key = request.GET.get('key')
+    if key != 'abc123':
+        messages.error(request, 'la clave es invalida')
+        return redirect('login')
+    try:
+        User.objects.create_user(username=username, password=password)
+    except:
+        messages.error(request, 'Error inesperado vuelva a intentar')
+        return redirect('login')
+
+    messages.success(request, 'Creado exitosamente')
+    return redirect('login')
+

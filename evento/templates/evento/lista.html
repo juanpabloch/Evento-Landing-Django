@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listado Inscriptos</title>
+    <link rel="stylesheet" href="{% static 'evento/css/list_style.css' %}">
+</head>
+<body>
+    <h1>Inscriptos</h1>
+    <div class="logout">
+        <a class="logout-btn" href="{% url 'logout' %}">Logout</a>
+    </div>
+    <div class="listado">
+        <table>
+            <tr class="head">
+                <th>Nombre y Apellido</th>
+                <th>Email</th>
+                <th>Pais</th>
+                <th>Teléfono</th>
+                <th>Inscripción</th>
+            </tr>
+            {% for persona in lista %}
+                <tr class="body">
+                    <td>{{ persona }}</td>
+                    <td>{{ persona.email }}</td>
+                    <td>{{ persona.pais }}</td>
+                    <td>{{ persona.telefono }}</td>
+                    <td>{{ persona.timestamp }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+</body>
+</html>
