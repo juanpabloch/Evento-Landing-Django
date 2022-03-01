@@ -46,9 +46,11 @@ class RegistroForm(forms.ModelForm):
 
 
 class UserRegistro(forms.ModelForm):
+    password = forms.CharField(widget=forms.PasswordInput)
+
     class Meta:
         model = User
-        fields = ['username', 'password']
+        fields = ['username']
         help_texts = {
             'username': None
         }
