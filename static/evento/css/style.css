@@ -228,6 +228,13 @@ input[type="submit"]:hover{
     box-shadow: 2px 2px 10px -3px #021800;
 }
 
+form .errorlist{
+    font-size: 1.3rem;
+    color: #e35454;
+    font-family: ProximaNova-Regular;
+    list-style: none;
+}
+
 /*--- footer ---*/
 footer{
     background-color: var(--background-color-form);
